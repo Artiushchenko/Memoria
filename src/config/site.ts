@@ -1,7 +1,7 @@
 export const siteConfig = {
 	name: 'MEMORIA',
 	fullName: 'MEMORIA',
-	url: 'https://example.com',
+	url: 'https://memoria-eta-eight.vercel.app',
 	route: {
 		from: 'Germany',
 		to: 'Ukraine'
