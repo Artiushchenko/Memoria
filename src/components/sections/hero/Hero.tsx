@@ -2,6 +2,7 @@ import { Container } from '@/components/ui/container/Container'
 import { contacts } from '@/config/contacts'
 import { ArrowRight, Phone } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
+import Image from 'next/image'
 
 export async function Hero() {
 	const t = await getTranslations('Hero')
@@ -94,99 +95,122 @@ export async function Hero() {
 							</div>
 						</div>
 
-						{/* Route visual */}
+						{/* Europe route visual */}
 						<div
 							className='relative hidden min-h-120 lg:block xl:min-h-130'
 							aria-hidden='true'
 						>
-							{/* Soft ambient glow */}
-							<div className='absolute left-1/2 top-1/2 size-100 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/1.5 blur-2xl' />
+							{/* Europe map */}
+							<div
+								className='absolute left-[54%] top-[51%] w-[165%] -translate-x-1/2 -translate-y-1/2 xl:w-[172%]'
+								style={{
+									maskImage:
+										'radial-gradient(ellipse 47% 52% at 52% 50%, black 48%, rgba(0,0,0,.88) 63%, rgba(0,0,0,.35) 80%, transparent 100%)',
+									WebkitMaskImage:
+										'radial-gradient(ellipse 47% 52% at 52% 50%, black 48%, rgba(0,0,0,.88) 63%, rgba(0,0,0,.35) 80%, transparent 100%)'
+								}}
+							>
+								<Image
+									src='/images/hero/europe-map.svg'
+									alt=''
+									width={10495}
+									height={7945}
+									draggable={false}
+									priority
+									className='h-auto w-full select-none opacity-[0.105] brightness-0 invert'
+								/>
+							</div>
 
-							{/* Decorative circles */}
-							<div className='absolute left-1/2 top-1/2 size-105 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/6.5' />
-
-							<div className='absolute left-1/2 top-1/2 size-78 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/7.5' />
-
-							<div className='absolute left-1/2 top-1/2 size-50 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/2.5' />
-
-							{/* Route itself */}
-							<div className='absolute left-1/2 top-1/2 w-[88%] -translate-x-1/2 -translate-y-1/2'>
+							{/* Europe → Ukraine route */}
+							<div className='absolute inset-0 z-10'>
 								<svg
-									viewBox='0 0 600 300'
-									className='h-auto w-full overflow-visible'
+									viewBox='0 0 600 500'
+									className='size-full overflow-visible'
 									fill='none'
 								>
+									<defs>
+										<filter
+											id='heroRouteGlow'
+											x='-50%'
+											y='-50%'
+											width='200%'
+											height='200%'
+										>
+											<feGaussianBlur stdDeviation='4' />
+										</filter>
+									</defs>
+
+									{/* Route glow */}
+									<path
+										d='M275 378C340 318 435 310 525 352'
+										stroke='rgba(255,255,255,0.065)'
+										strokeWidth='7'
+										strokeLinecap='round'
+										filter='url(#heroRouteGlow)'
+									/>
+
 									{/* Route */}
 									<path
-										d='M105 185C205 100 375 95 495 145'
-										stroke='rgba(255,255,255,0.20)'
-										strokeWidth='1.5'
+										d='M275 378C340 318 435 310 525 352'
+										stroke='rgba(255,255,255,0.34)'
+										strokeWidth='1.4'
 										strokeDasharray='6 9'
 										strokeLinecap='round'
 									/>
 
-									{/* Germany halo */}
+									{/* EU halo */}
 									<circle
-										cx='105'
-										cy='185'
-										r='15'
-										fill='rgba(255,255,255,0.06)'
+										cx='275'
+										cy='378'
+										r='14'
+										fill='rgba(255,255,255,0.055)'
 									/>
 
-									{/* Germany point */}
+									{/* EU point */}
 									<circle
-										cx='105'
-										cy='185'
-										r='6'
+										cx='275'
+										cy='378'
+										r='5'
 										fill='#142b47'
-										stroke='white'
-										strokeWidth='3'
+										stroke='rgba(255,255,255,0.95)'
+										strokeWidth='2.5'
 									/>
 
-									{/* Ukraine halo */}
+									{/* UA halo */}
 									<circle
-										cx='495'
-										cy='145'
-										r='15'
-										fill='rgba(185,154,98,0.10)'
+										cx='525'
+										cy='352'
+										r='18'
+										fill='rgba(185,154,98,0.11)'
 									/>
 
-									{/* Ukraine point */}
+									{/* UA point */}
 									<circle
-										cx='495'
-										cy='145'
-										r='6'
+										cx='525'
+										cy='352'
+										r='5'
 										fill='#142b47'
 										stroke='#b99a62'
-										strokeWidth='3'
+										strokeWidth='2.5'
 									/>
 								</svg>
 
-								{/* Germany flag */}
-								<div className='absolute left-[17.5%] top-[66%] -translate-x-1/2'>
-									<div className='flex items-center gap-2 rounded-full border border-white/8 bg-white/5 px-3 py-2 backdrop-blur-sm'>
-										<span className='text-lg leading-none'>🇩🇪</span>
+								{/* EU label */}
+								<div className='absolute left-[45.8%] top-[75.6%] -translate-x-[calc(100%+14px)] -translate-y-1/2'>
+									<div className='flex h-7 min-w-10 items-center justify-center rounded-full border border-white/8 bg-primary/70 px-2.5 backdrop-blur-md'>
+										<span className='text-[8px] font-bold tracking-[0.16em] text-white/60'>
+											EU
+										</span>
 									</div>
 								</div>
 
-								{/* Ukraine flag */}
-								<div className='absolute left-[82.5%] top-[52.5%] -translate-x-1/2'>
-									<div className='flex items-center gap-2 rounded-full border border-white/8 bg-white/5 px-3 py-2 backdrop-blur-sm'>
-										<span className='text-lg leading-none'>🇺🇦</span>
+								{/* UA label */}
+								<div className='absolute left-[87.5%] top-[70.4%] translate-x-4 -translate-y-1/2'>
+									<div className='flex h-7 min-w-10 items-center justify-center rounded-full border border-accent/15 bg-primary/70 px-2.5 backdrop-blur-md'>
+										<span className='text-[8px] font-bold tracking-[0.16em] text-accent/80'>
+											UA
+										</span>
 									</div>
-								</div>
-							</div>
-
-							{/* Small brand detail */}
-							<div className='absolute bottom-[15%] left-1/2 -translate-x-1/2'>
-								<div className='flex items-center gap-3'>
-									<div className='h-px w-8 bg-white/10' />
-
-									<span className='text-[9px] font-bold uppercase tracking-[0.25em] text-white/25'>
-										MEMORIA
-									</span>
-
-									<div className='h-px w-8 bg-white/10' />
 								</div>
 							</div>
 						</div>
@@ -197,15 +221,15 @@ export async function Hero() {
 						{trustItems.map((item, index) => (
 							<div
 								key={`${item.value}-${item.label}`}
-								className={
-									index !== 0 ? 'border-l border-white/10 pl-4 sm:pl-8' : ''
-								}
+								className={`text-center ${
+									index !== 0 ? 'border-l border-white/10' : ''
+								}`}
 							>
 								<div className='font-serif text-xl font-semibold sm:text-3xl'>
 									{item.value}
 								</div>
 
-								<div className='mt-1 pr-2 text-[9px] leading-4 text-white/45 sm:text-xs'>
+								<div className='mt-1 text-[9px] leading-4 text-white/45 sm:text-xs'>
 									{item.label}
 								</div>
 							</div>

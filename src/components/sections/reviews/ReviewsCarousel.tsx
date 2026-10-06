@@ -5,7 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import { ArrowLeft, ArrowRight, Quote } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useLocale } from 'next-intl'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useLayoutEffect, useState } from 'react'
 
 export function ReviewsCarousel() {
 	const locale = useLocale() as 'ru' | 'uk'
@@ -17,32 +17,28 @@ export function ReviewsCarousel() {
 	})
 
 	const [selectedIndex, setSelectedIndex] = useState(0)
-	const [scrollSnapCount, setScrollSnapCount] = useState(1)
 	const [canScrollPrev, setCanScrollPrev] = useState(false)
 	const [canScrollNext, setCanScrollNext] = useState(true)
 
-	const updateCarouselState = useCallback(() => {
+	useLayoutEffect(() => {
 		if (!emblaApi) return
 
-		setSelectedIndex(emblaApi.selectedScrollSnap())
-		setScrollSnapCount(Math.max(emblaApi.scrollSnapList().length, 1))
-		setCanScrollPrev(emblaApi.canScrollPrev())
-		setCanScrollNext(emblaApi.canScrollNext())
-	}, [emblaApi])
+		const syncCarouselState = () => {
+			setSelectedIndex(emblaApi.selectedScrollSnap())
+			setCanScrollPrev(emblaApi.canScrollPrev())
+			setCanScrollNext(emblaApi.canScrollNext())
+		}
 
-	useEffect(() => {
-		if (!emblaApi) return
+		syncCarouselState()
 
-		emblaApi.on('init', updateCarouselState)
-		emblaApi.on('select', updateCarouselState)
-		emblaApi.on('reInit', updateCarouselState)
+		emblaApi.on('select', syncCarouselState)
+		emblaApi.on('reInit', syncCarouselState)
 
 		return () => {
-			emblaApi.off('init', updateCarouselState)
-			emblaApi.off('select', updateCarouselState)
-			emblaApi.off('reInit', updateCarouselState)
+			emblaApi.off('select', syncCarouselState)
+			emblaApi.off('reInit', syncCarouselState)
 		}
-	}, [emblaApi, updateCarouselState])
+	}, [emblaApi])
 
 	const scrollPrev = useCallback(() => {
 		emblaApi?.scrollPrev()
@@ -52,7 +48,8 @@ export function ReviewsCarousel() {
 		emblaApi?.scrollNext()
 	}, [emblaApi])
 
-	const progress = ((selectedIndex + 1) / scrollSnapCount) * 100
+	const totalReviews = reviews.length
+	const progress = ((selectedIndex + 1) / totalReviews) * 100
 
 	return (
 		<div>
@@ -135,7 +132,7 @@ export function ReviewsCarousel() {
 								{/* Author */}
 								<div className='relative z-10 mt-auto pt-10'>
 									<div className='mb-5 h-px w-full bg-border'>
-										<div className='h-px w-10 bg-accent transition-all duration-500 group-hover:w-20' />
+										<div className='h-px w-10 bg-accent transition-[width] duration-500 ease-out group-hover:w-full' />
 									</div>
 
 									<div className='flex items-end justify-between gap-5'>
@@ -171,7 +168,7 @@ export function ReviewsCarousel() {
 					<span className='text-xs text-muted'>/</span>
 
 					<span className='text-xs font-semibold text-muted'>
-						{String(scrollSnapCount).padStart(2, '0')}
+						{String(totalReviews).padStart(2, '0')}
 					</span>
 				</div>
 

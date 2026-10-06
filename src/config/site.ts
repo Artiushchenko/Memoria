@@ -3,7 +3,7 @@ export const siteConfig = {
 	fullName: 'MEMORIA',
 	url: 'https://memoria-eta-eight.vercel.app',
 	route: {
-		from: 'Germany',
+		from: 'Europe',
 		to: 'Ukraine'
 	},
 	experience: '25+',

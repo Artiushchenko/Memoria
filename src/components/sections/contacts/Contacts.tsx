@@ -82,7 +82,7 @@ export async function Contacts() {
 
 							<ContactItem
 								label={t('whatsapp')}
-								value={contacts.phones[0].label}
+								value={contacts.whatsapp.label}
 								href={contactLinks.whatsapp}
 								icon={MessageCircle}
 								external
@@ -90,7 +90,7 @@ export async function Contacts() {
 
 							<ContactItem
 								label={t('viber')}
-								value={contacts.phones[0].label}
+								value={contacts.viber.label}
 								href={contactLinks.viber}
 								icon={MessageCircle}
 							/>

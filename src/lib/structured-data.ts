@@ -12,14 +12,14 @@ export function getOrganizationStructuredData(locale: Locale) {
 		name: siteConfig.name,
 		url: `${siteConfig.url}/${locale}`,
 		description: isRussian
-			? 'Перевозка умерших из Германии в Украину, помощь с документами, кремацией и организацией похорон.'
-			: 'Перевезення померлих з Німеччини в Україну, допомога з документами, кремацією та організацією поховання.',
+			? 'Международная перевозка умерших в Украину, помощь с документами, кремацией и организацией похорон.'
+			: 'Міжнародне перевезення померлих в Україну, допомога з документами, кремацією та організацією поховання.',
 		telephone: contacts.phones.map(phone => phone.value),
 		email: contacts.email,
 		areaServed: [
 			{
-				'@type': 'Country',
-				name: 'Germany'
+				'@type': 'Place',
+				name: 'Europe'
 			},
 			{
 				'@type': 'Country',
