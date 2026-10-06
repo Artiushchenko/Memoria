@@ -1,26 +1,85 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #f7f8fa;
+	--surface: #ffffff;
+	--surface-soft: #f0f3f6;
+
+	--foreground: #101d2f;
+	--foreground-secondary: #445164;
+	--muted: #707b8b;
+
+	--primary: #142b47;
+	--primary-hover: #0e2239;
+	--primary-foreground: #ffffff;
+
+	--accent: #b99a62;
+	--accent-soft: #eee6d8;
+
+	--border: #e2e7ec;
+
+	--container: 1280px;
+	--header-height: 80px;
+
+	--radius-sm: 10px;
+	--radius-md: 18px;
+	--radius-lg: 28px;
+
+	--shadow-soft:
+		0 1px 2px rgba(16, 29, 47, 0.03), 0 12px 40px rgba(16, 29, 47, 0.06);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--color-background: var(--background);
+	--color-surface: var(--surface);
+	--color-surface-soft: var(--surface-soft);
+
+	--color-foreground: var(--foreground);
+	--color-foreground-secondary: var(--foreground-secondary);
+	--color-muted: var(--muted);
+
+	--color-primary: var(--primary);
+	--color-primary-hover: var(--primary-hover);
+	--color-accent: var(--accent);
+	--color-accent-soft: var(--accent-soft);
+	--color-border: var(--border);
+
+	--font-sans: var(--font-manrope);
+	--font-serif: var(--font-cormorant);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-manrope), sans-serif;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+button,
+a {
+	-webkit-tap-highlight-color: transparent;
+}
+
+button {
+	font: inherit;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+::selection {
+	background: var(--primary);
+	color: white;
 }
