@@ -34,6 +34,8 @@ export function ReviewsCarousel() {
 		emblaApi.on('select', syncCarouselState)
 		emblaApi.on('reInit', syncCarouselState)
 
+		syncCarouselState()
+
 		return () => {
 			emblaApi.off('select', syncCarouselState)
 			emblaApi.off('reInit', syncCarouselState)
@@ -60,7 +62,7 @@ export function ReviewsCarousel() {
 					{reviews.map((review, index) => (
 						<div
 							key={review.id}
-							className='min-w-0 flex-[0_0_91%] pl-4 sm:flex-[0_0_68%] sm:pl-5 lg:flex-[0_0_46%] xl:flex-[0_0_41%]'
+							className='min-w-0 flex-[0_0_100%] pl-4 sm:flex-[0_0_68%] sm:pl-5 lg:flex-[0_0_46%] xl:flex-[0_0_41%]'
 						>
 							<ReviewCard
 								review={review}

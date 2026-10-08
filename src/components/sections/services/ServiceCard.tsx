@@ -106,7 +106,7 @@ export function ServiceCard({
 				<span
 					className={cn(
 						'pt-1 text-[10px] font-bold tracking-[0.2em]',
-						featured ? 'text-white/40' : 'text-muted'
+						featured ? 'text-white/75' : 'text-muted'
 					)}
 				>
 					{number}

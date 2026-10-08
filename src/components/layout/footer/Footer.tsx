@@ -63,14 +63,14 @@ export async function Footer() {
 							{t('tagline')}
 						</p>
 
-						<p className='mt-4 max-w-md text-sm leading-6 text-white/45'>
+						<p className='mt-4 max-w-md text-sm leading-6 text-white/75'>
 							{t('description')}
 						</p>
 					</div>
 
 					{/* Navigation */}
 					<div>
-						<div className='text-[10px] font-bold uppercase tracking-[0.2em] text-white/35'>
+						<div className='text-[10px] font-bold uppercase tracking-[0.2em] text-white/75'>
 							{t('navigation')}
 						</div>
 
@@ -87,6 +87,7 @@ export async function Footer() {
 									{item.label}
 
 									<ArrowUpRight
+										aria-hidden='true'
 										size={12}
 										className='opacity-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100'
 									/>
@@ -97,7 +98,7 @@ export async function Footer() {
 
 					{/* Contacts */}
 					<div>
-						<div className='text-[10px] font-bold uppercase tracking-[0.2em] text-white/35'>
+						<div className='text-[10px] font-bold uppercase tracking-[0.2em] text-white/75'>
 							{t('contacts')}
 						</div>
 
@@ -109,6 +110,7 @@ export async function Footer() {
 									className='group flex items-center gap-3 border-b border-white/[0.07] py-4 first:pt-0'
 								>
 									<Phone
+										aria-hidden='true'
 										size={15}
 										strokeWidth={1.6}
 										className='shrink-0 text-accent'
@@ -125,6 +127,7 @@ export async function Footer() {
 								className='group flex items-center gap-3 py-4'
 							>
 								<Mail
+									aria-hidden='true'
 									size={15}
 									strokeWidth={1.6}
 									className='shrink-0 text-accent'
@@ -139,7 +142,7 @@ export async function Footer() {
 				</div>
 
 				{/* Bottom */}
-				<div className='flex justify-center py-6 text-center text-[11px] text-white/30'>
+				<div className='flex justify-center py-6 text-center text-[11px] text-white/75'>
 					<p>
 						© {new Date().getFullYear()} {siteConfig.name}. {t('copyright')}
 					</p>

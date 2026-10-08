@@ -31,7 +31,7 @@ export async function Contacts() {
 			</div>
 
 			<Container className='relative z-10'>
-				<div className='grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20 xl:gap-28'>
+				<div className='grid min-w-0 grid-cols-[minmax(0,1fr)] gap-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-20 xl:gap-28'>
 					{/* Left */}
 					<div className='lg:sticky lg:top-28 lg:self-start'>
 						<div className='flex items-center gap-3'>
@@ -63,7 +63,7 @@ export async function Contacts() {
 					</div>
 
 					{/* Right */}
-					<div>
+					<div className='min-w-0'>
 						<ContactsList
 							labels={{
 								phone: t('phone'),

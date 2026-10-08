@@ -23,7 +23,7 @@ export function TransportFeatures({ features }: TransportFeaturesProps) {
 						index === features.length - 1 && 'lg:pr-0'
 					)}
 				>
-					<span className='text-[10px] font-bold tracking-[0.2em] text-accent'>
+					<span className='text-[10px] font-bold tracking-[0.2em] text-[#866b3e]'>
 						{feature.value}
 					</span>
 

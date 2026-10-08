@@ -44,6 +44,11 @@ export function ReviewsControls({
 			<div
 				className='relative h-px flex-1 overflow-hidden bg-primary/10'
 				role='progressbar'
+				aria-label={
+					locale === 'ru'
+						? 'Прогресс просмотра отзывов'
+						: 'Прогрес перегляду відгуків'
+				}
 				aria-valuemin={0}
 				aria-valuemax={100}
 				aria-valuenow={Math.round(progress)}
