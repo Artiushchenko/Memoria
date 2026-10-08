@@ -19,11 +19,11 @@ export function getOrganizationStructuredData(locale: Locale) {
 		areaServed: [
 			{
 				'@type': 'Place',
-				name: 'Europe'
+				name: siteConfig.route.from
 			},
 			{
 				'@type': 'Country',
-				name: 'Ukraine'
+				name: siteConfig.route.to
 			}
 		],
 		availableLanguage: [

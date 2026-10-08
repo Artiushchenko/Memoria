@@ -46,7 +46,6 @@ export async function Footer() {
 					<div>
 						<Link
 							href='/'
-							aria-label={`${siteConfig.name} - Home`}
 							className='inline-block'
 						>
 							<Image

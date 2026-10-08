@@ -1,6 +1,7 @@
 'use client'
 
 import { usePathname, useRouter } from '@/i18n/navigation'
+import { routing, type Locale } from '@/i18n/routing'
 import { cn } from '@/lib/cn'
 import { useLocale } from 'next-intl'
 
@@ -17,7 +18,7 @@ export function LanguageSwitcher({
 	const pathname = usePathname()
 	const router = useRouter()
 
-	function changeLanguage(nextLocale: 'ru' | 'uk') {
+	function changeLanguage(nextLocale: Locale) {
 		if (nextLocale === locale) return
 
 		router.replace(pathname, {
@@ -26,32 +27,37 @@ export function LanguageSwitcher({
 		})
 	}
 
+	const light = scrolled || mobile
+
 	return (
 		<div
+			role='group'
+			aria-label='Language / Мова'
 			className={cn(
 				'flex items-center rounded-full p-1',
-				mobile
+				light
 					? 'border border-border bg-surface-soft'
-					: scrolled
-						? 'border border-border bg-surface-soft'
-						: 'border border-white/15 bg-white/10 backdrop-blur-md'
+					: 'border border-white/15 bg-white/10 backdrop-blur-md'
 			)}
 		>
-			{(['ru', 'uk'] as const).map(language => {
+			{routing.locales.map(language => {
 				const active = locale === language
 
 				return (
 					<button
 						key={language}
 						type='button'
+						lang={language}
+						aria-label={language === 'ru' ? 'Русский' : 'Українська'}
+						aria-pressed={active}
 						onClick={() => changeLanguage(language)}
 						className={cn(
 							'rounded-full px-3 py-1.5 text-xs font-bold uppercase transition-all duration-300',
 							active
-								? scrolled || mobile
+								? light
 									? 'bg-primary text-white shadow-sm'
 									: 'bg-white text-primary shadow-sm'
-								: scrolled || mobile
+								: light
 									? 'text-muted hover:text-primary'
 									: 'text-white/55 hover:text-white'
 						)}

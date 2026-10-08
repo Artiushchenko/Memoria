@@ -25,6 +25,7 @@ export function ContactItem({
 		>
 			<div className='flex size-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-accent transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-primary'>
 				<Icon
+					aria-hidden='true'
 					size={19}
 					strokeWidth={1.6}
 				/>
@@ -41,6 +42,7 @@ export function ContactItem({
 			</div>
 
 			<ArrowUpRight
+				aria-hidden='true'
 				size={18}
 				strokeWidth={1.6}
 				className='shrink-0 text-white/35 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent'

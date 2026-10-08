@@ -24,7 +24,7 @@ export async function MobileContactBar() {
 				<a
 					href={contactLinks.whatsapp}
 					target='_blank'
-					rel='noreferrer'
+					rel='noopener noreferrer'
 					aria-label={t('whatsapp')}
 					className='flex h-12 items-center justify-center gap-2 rounded-xl bg-surface-soft px-2 text-primary transition-colors active:bg-border'
 				>

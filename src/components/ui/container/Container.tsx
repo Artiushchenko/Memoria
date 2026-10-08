@@ -1,13 +1,12 @@
 import { cn } from '@/lib/cn'
+import type { ComponentPropsWithRef } from 'react'
 
-type ContainerProps = {
-	children: React.ReactNode
-	className?: string
-}
+type ContainerProps = ComponentPropsWithRef<'div'>
 
-export function Container({ children, className }: ContainerProps) {
+export function Container({ children, className, ...props }: ContainerProps) {
 	return (
 		<div
+			{...props}
 			className={cn(
 				'mx-auto w-full max-w-(--container) px-5 sm:px-6 lg:px-8',
 				className

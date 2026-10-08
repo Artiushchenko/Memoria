@@ -38,10 +38,13 @@ export async function Header() {
 	return (
 		<HeaderClient
 			navigation={navigation}
+			homeLabel={t('home')}
 			contactLabel={t('contact')}
 			menuLabel={t('menu')}
 			openMenuLabel={t('openMenu')}
 			closeMenuLabel={t('closeMenu')}
+			navigationAriaLabel={t('mainNavigationAriaLabel')}
+			mobileNavigationAriaLabel={t('mobileNavigationAriaLabel')}
 		/>
 	)
 }

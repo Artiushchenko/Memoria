@@ -1,3 +1,5 @@
+import { routing } from '@/i18n/routing'
+
 export const siteConfig = {
 	name: 'MEMORIA',
 	fullName: 'MEMORIA',
@@ -8,7 +10,7 @@ export const siteConfig = {
 	},
 	experience: '25+',
 	availability: '24/7',
-	locales: ['ru', 'uk'] as const,
-	defaultLocale: 'ru' as const,
+	locales: routing.locales,
+	defaultLocale: routing.defaultLocale,
 	ogImage: '/images/og/og-main.png'
 } as const

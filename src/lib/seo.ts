@@ -1,7 +1,6 @@
 import { siteConfig } from '@/config/site'
+import type { Locale } from '@/i18n/routing'
 import type { Metadata } from 'next'
-
-type Locale = (typeof siteConfig.locales)[number]
 
 type CreateMetadataParams = {
 	locale: Locale
@@ -22,11 +21,15 @@ export function createMetadata({
 	ogDescription,
 	path = ''
 }: CreateMetadataParams): Metadata {
-	const localizedPath = `/${locale}${path}`
+	const getLocalizedUrl = (locale: Locale) =>
+		new URL(`/${locale}${path}`, siteConfig.url).toString()
 
-	const canonical = new URL(localizedPath, siteConfig.url).toString()
-	const ruUrl = new URL(`/ru${path}`, siteConfig.url).toString()
-	const ukUrl = new URL(`/uk${path}`, siteConfig.url).toString()
+	const canonical = getLocalizedUrl(locale)
+	const defaultUrl = getLocalizedUrl(siteConfig.defaultLocale)
+
+	const languages = Object.fromEntries(
+		siteConfig.locales.map(locale => [locale, getLocalizedUrl(locale)])
+	)
 
 	return {
 		metadataBase: new URL(siteConfig.url),
@@ -39,15 +42,16 @@ export function createMetadata({
 		alternates: {
 			canonical,
 			languages: {
-				ru: ruUrl,
-				uk: ukUrl,
-				'x-default': ruUrl
+				...languages,
+				'x-default': defaultUrl
 			}
 		},
 		openGraph: {
 			type: 'website',
 			locale: locale === 'ru' ? 'ru_RU' : 'uk_UA',
-			alternateLocale: locale === 'ru' ? ['uk_UA'] : ['ru_RU'],
+			alternateLocale: siteConfig.locales
+				.filter(item => item !== locale)
+				.map(item => (item === 'ru' ? 'ru_RU' : 'uk_UA')),
 			url: canonical,
 			siteName: siteConfig.name,
 			title: ogTitle ?? title,
@@ -57,7 +61,7 @@ export function createMetadata({
 					url: siteConfig.ogImage,
 					width: 1200,
 					height: 630,
-					alt: 'MEMORIA'
+					alt: siteConfig.name
 				}
 			]
 		},

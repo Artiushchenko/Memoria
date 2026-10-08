@@ -1,17 +1,24 @@
 import { Container } from '@/components/ui/container/Container'
 import { Section } from '@/components/ui/section/Section'
 import { getTranslations } from 'next-intl/server'
-import { ServiceCard } from './ServiceCard'
+import { ServiceCard, type ServiceIcon } from './ServiceCard'
 
 export async function Services() {
 	const t = await getTranslations('Services')
 
-	const services = [
+	const services: {
+		number: string
+		title: string
+		description: string
+		icon: ServiceIcon
+		featured?: boolean
+		tag?: string
+	}[] = [
 		{
 			number: t('transport.number'),
 			title: t('transport.title'),
 			description: t('transport.description'),
-			icon: 'transport' as const,
+			icon: 'transport',
 			featured: true,
 			tag: t('transport.tag')
 		},
@@ -19,31 +26,31 @@ export async function Services() {
 			number: t('documents.number'),
 			title: t('documents.title'),
 			description: t('documents.description'),
-			icon: 'documents' as const
+			icon: 'documents'
 		},
 		{
 			number: t('cremation.number'),
 			title: t('cremation.title'),
 			description: t('cremation.description'),
-			icon: 'cremation' as const
+			icon: 'cremation'
 		},
 		{
 			number: t('urn.number'),
 			title: t('urn.title'),
 			description: t('urn.description'),
-			icon: 'urn' as const
+			icon: 'urn'
 		},
 		{
 			number: t('funeral.number'),
 			title: t('funeral.title'),
 			description: t('funeral.description'),
-			icon: 'funeral' as const
+			icon: 'funeral'
 		},
 		{
 			number: t('support.number'),
 			title: t('support.title'),
 			description: t('support.description'),
-			icon: 'support' as const
+			icon: 'support'
 		}
 	]
 

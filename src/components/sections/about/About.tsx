@@ -1,29 +1,31 @@
 import { Container } from '@/components/ui/container/Container'
 import { Section } from '@/components/ui/section/Section'
 import { getTranslations } from 'next-intl/server'
+import type { AboutFact } from './about.types'
 import { AboutFacts } from './AboutFacts'
+import { AboutPrinciples } from './AboutPrinciples'
 
 export async function About() {
 	const t = await getTranslations('About')
 
-	const facts = [
+	const facts: AboutFact[] = [
 		{
 			value: t('facts.experience.value'),
 			label: t('facts.experience.label'),
 			description: t('facts.experience.description'),
-			icon: 'experience' as const
+			icon: 'experience'
 		},
 		{
 			value: t('facts.availability.value'),
 			label: t('facts.availability.label'),
 			description: t('facts.availability.description'),
-			icon: 'availability' as const
+			icon: 'availability'
 		},
 		{
 			value: t('facts.support.value'),
 			label: t('facts.support.label'),
 			description: t('facts.support.description'),
-			icon: 'support' as const
+			icon: 'support'
 		}
 	]
 
@@ -77,8 +79,9 @@ export async function About() {
 
 					{/* Right */}
 					<div className='lg:pt-16 xl:pt-20'>
-						<AboutFacts
-							facts={facts}
+						<AboutFacts facts={facts} />
+
+						<AboutPrinciples
 							principles={principles}
 							cta={t('cta')}
 						/>

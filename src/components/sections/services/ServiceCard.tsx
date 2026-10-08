@@ -11,7 +11,7 @@ import {
 } from 'lucide-react'
 import { motion } from 'motion/react'
 
-type ServiceIcon =
+export type ServiceIcon =
 	| 'transport'
 	| 'documents'
 	| 'cremation'
@@ -121,6 +121,7 @@ export function ServiceCard({
 					)}
 				>
 					<Icon
+						aria-hidden='true'
 						size={18}
 						strokeWidth={1.5}
 					/>

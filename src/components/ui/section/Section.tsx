@@ -1,15 +1,12 @@
 import { cn } from '@/lib/cn'
+import type { ComponentPropsWithRef } from 'react'
 
-type SectionProps = {
-	children: React.ReactNode
-	className?: string
-	id?: string
-}
+type SectionProps = ComponentPropsWithRef<'section'>
 
-export function Section({ children, className, id }: SectionProps) {
+export function Section({ children, className, ...props }: SectionProps) {
 	return (
 		<section
-			id={id}
+			{...props}
 			className={cn('py-20 sm:py-24 lg:py-32', className)}
 		>
 			{children}

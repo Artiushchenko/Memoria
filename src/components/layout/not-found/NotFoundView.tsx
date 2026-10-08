@@ -1,4 +1,6 @@
+import { siteConfig } from '@/config/site'
 import { ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
 
 type NotFoundViewProps = {
 	title: string
@@ -33,7 +35,7 @@ export function NotFoundView({
 					<span className='h-px w-8 bg-[#b99a62]' />
 
 					<span className='text-[10px] font-bold uppercase tracking-[0.28em] text-white/50'>
-						MEMORIA
+						{siteConfig.name}
 					</span>
 
 					<span className='h-px w-8 bg-[#b99a62]' />
@@ -57,7 +59,7 @@ export function NotFoundView({
 						{description}
 					</p>
 
-					<a
+					<Link
 						href={homeHref}
 						className='mx-auto mt-9 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-semibold text-[#142b47]! transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90'
 					>
@@ -66,7 +68,7 @@ export function NotFoundView({
 							strokeWidth={1.8}
 						/>
 						{backHome}
-					</a>
+					</Link>
 				</div>
 			</div>
 		</main>

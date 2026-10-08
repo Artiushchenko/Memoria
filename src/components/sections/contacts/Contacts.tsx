@@ -1,8 +1,7 @@
 import { Container } from '@/components/ui/container/Container'
-import { contactLinks, contacts } from '@/config/contacts'
-import { Clock3, Mail, MessageCircle, Smartphone } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
-import { ContactItem } from './ContactItem'
+import { ContactsList } from './ContactsList'
+import { ContactsSupport } from './ContactsSupport'
 
 export async function Contacts() {
 	const t = await getTranslations('Contacts')
@@ -65,65 +64,21 @@ export async function Contacts() {
 
 					{/* Right */}
 					<div>
-						<div className='border-t border-white/10'>
-							<ContactItem
-								label={`${t('phone')} · ${t('germany')}`}
-								value={contacts.phones[0].label}
-								href={contactLinks.phone(contacts.phones[0].value)}
-								icon={Smartphone}
-							/>
+						<ContactsList
+							labels={{
+								phone: t('phone'),
+								germany: t('germany'),
+								ukraine: t('ukraine'),
+								whatsapp: t('whatsapp'),
+								viber: t('viber'),
+								email: t('email')
+							}}
+						/>
 
-							<ContactItem
-								label={`${t('phone')} · ${t('ukraine')}`}
-								value={contacts.phones[1].label}
-								href={contactLinks.phone(contacts.phones[1].value)}
-								icon={Smartphone}
-							/>
-
-							<ContactItem
-								label={t('whatsapp')}
-								value={contacts.whatsapp.label}
-								href={contactLinks.whatsapp}
-								icon={MessageCircle}
-								external
-							/>
-
-							<ContactItem
-								label={t('viber')}
-								value={contacts.viber.label}
-								href={contactLinks.viber}
-								icon={MessageCircle}
-							/>
-
-							<ContactItem
-								label={t('email')}
-								value={contacts.email}
-								href={contactLinks.email}
-								icon={Mail}
-							/>
-						</div>
-
-						{/* Support note */}
-						<div className='mt-10 rounded-lg border border-white/10 bg-white/4.5 p-6 backdrop-blur-sm sm:p-8'>
-							<div className='flex items-start gap-4'>
-								<div className='flex size-10 shrink-0 items-center justify-center rounded-full bg-accent text-primary'>
-									<Clock3
-										size={17}
-										strokeWidth={1.8}
-									/>
-								</div>
-
-								<div>
-									<h3 className='font-serif text-xl font-semibold text-white sm:text-2xl'>
-										{t('response')}
-									</h3>
-
-									<p className='mt-3 max-w-lg text-sm leading-6 text-white/50'>
-										{t('responseDescription')}
-									</p>
-								</div>
-							</div>
-						</div>
+						<ContactsSupport
+							title={t('response')}
+							description={t('responseDescription')}
+						/>
 					</div>
 				</div>
 			</Container>
